@@ -1,0 +1,4 @@
+default_fqbn: arduino:avr:uno
+profiles:
+  uno:
+    fqbn: arduino:avr:uno

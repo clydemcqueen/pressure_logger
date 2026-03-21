@@ -14,7 +14,7 @@ Run the following commands to install the required tools and dependencies:
 
 1. Install `arduino-cli`:
    ```bash
-   sudo snap install arduino-cli
+   curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=~/.local/bin sh
    ```
 
 2. Install the AVR core (required for compiling for the Adafruit Metro 328 / Arduino Uno):
@@ -27,9 +27,15 @@ Run the following commands to install the required tools and dependencies:
    arduino-cli lib install "RTClib" "SD" "Low-Power"
    ```
 
-## Build Instructions
+## Build and Upload
 
-To compile the sketch after making any changes, run:
+To compile and upload the sketch after making any changes, run:
 ```bash
-arduino-cli compile --fqbn arduino:avr:uno src/pressure_logger/pressure_logger.ino
+cd src/v1_field
+arduino-cli compile --upload -p /dev/ttyUSB0
+```
+
+To listen to the serial port:
+```bash
+arduino-cli monitor -p /dev/ttyUSB0 -c baudrate=115200
 ```
